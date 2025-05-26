@@ -1,3 +1,38 @@
 <h1>Welcome {{nom}}</h1>
 
 <button (click)="clickButton()"><img [src]="imageUrl" class="image-button"/></button>
+
+<app-counter></app-counter>
+
+<div *ngIf="isLoggedIn">
+    <h1>WELCOME {{nom}}</h1>
+    <button (click)="logout()">Logout</button>
+</div>
+
+
+<div *ngIf="!isLoggedIn">
+    <h1 >USER NOT LOGGED</h1>
+    <button (click)="login()">Login</button>
+</div>
+
+<p *ngIf="isLoggedIn; else notLoggedIn">You are logged!</p>
+
+<ng-template #notLoggedIn>
+    <p>You are not logged!</p>
+</ng-template>
+
+<ul>
+    <li *ngFor="let item of items">
+        {{item}}
+    </li>
+</ul>
+
+<div [ngClass]="{'highlight': isActive}">
+    Conditional Classe
+</div>
+
+<div [ngStyle]="{'color': textColor, 'font-size': fontSize + 'px'}">
+    Style with ngStyle
+</div>
+
+<app-list-products></app-list-products>
